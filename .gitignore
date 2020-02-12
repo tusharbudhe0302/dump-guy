@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Ignore Nnode_Modules
+**/node_modules/*
+*/node_modules/*
+*node_modules/*

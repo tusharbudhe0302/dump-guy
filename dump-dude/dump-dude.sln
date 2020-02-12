@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS-Base", "CS-Base\CS-Base.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetCode-CS", "LeetCode-CS\LeetCode-CS.csproj", "{93E58390-28FE-4A12-A991-98B031F9E196}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "JS-Base", "JS-Base\JS-Base.njsproj", "{E7A92404-7E65-401B-AC82-CAEE55CAEF61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{93E58390-28FE-4A12-A991-98B031F9E196}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93E58390-28FE-4A12-A991-98B031F9E196}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93E58390-28FE-4A12-A991-98B031F9E196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A92404-7E65-401B-AC82-CAEE55CAEF61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A92404-7E65-401B-AC82-CAEE55CAEF61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A92404-7E65-401B-AC82-CAEE55CAEF61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A92404-7E65-401B-AC82-CAEE55CAEF61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

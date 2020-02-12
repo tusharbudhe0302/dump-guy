@@ -1,0 +1,9 @@
+{
+  "name": "js-base",
+  "version": "0.0.0",
+  "description": "JS-Base",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}

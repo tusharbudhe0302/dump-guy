@@ -1,0 +1,103 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>JS-Base</Name>
+    <RootNamespace>JS-Base</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>e7a92404-7e65-401b-ac82-caee55caef61</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="design-patters\0.Objects-JS\basics.js" />
+    <Content Include="design-patters\0.Objects-JS\README.md" />
+    <Content Include="design-patters\0.Objects-JS\task-objects-basics.js" />
+    <Content Include="design-patters\1.Creational\constructor-pattern\constructor-pattern.js" />
+    <Content Include="design-patters\1.Creational\constructor-pattern\nodejs\class.js" />
+    <Content Include="design-patters\1.Creational\constructor-pattern\nodejs\main.js" />
+    <Content Include="design-patters\1.Creational\constructor-pattern\nodejs\task.js" />
+    <Content Include="design-patters\1.Creational\factory-repository-pattern\main.js" />
+    <Content Include="design-patters\1.Creational\factory-repository-pattern\project.repository.js" />
+    <Content Include="design-patters\1.Creational\factory-repository-pattern\repository-factory.js" />
+    <Content Include="design-patters\1.Creational\factory-repository-pattern\task.repository.js" />
+    <Content Include="design-patters\1.Creational\factory-repository-pattern\user.repository.js" />
+    <Content Include="design-patters\1.Creational\module-pattern\main.js" />
+    <Content Include="design-patters\1.Creational\module-pattern\task.js" />
+    <Content Include="design-patters\1.Creational\module-pattern\task.repository.js" />
+    <Content Include="design-patters\1.Creational\singleton-pattern\nodejs\main.js" />
+    <Content Include="design-patters\1.Creational\singleton-pattern\nodejs\repo.js" />
+    <Content Include="design-patters\1.Creational\singleton-pattern\nodejs\taskHandler.js" />
+    <Content Include="design-patters\1.Creational\singleton-pattern\singleton.js" />
+    <Content Include="design-patters\2.Structural\decorator-pattern\complex\subObject.js" />
+    <Content Include="design-patters\2.Structural\decorator-pattern\simple\task.js" />
+    <Content Include="design-patters\2.Structural\facade-pattern\task.js" />
+    <Content Include="design-patters\2.Structural\flyweight-pattern\main.js" />
+    <Content Include="design-patters\3.Behavioural\command-pattern\taskRepo.js" />
+    <Content Include="design-patters\3.Behavioural\mediator-pattern\main.js" />
+    <Content Include="design-patters\3.Behavioural\mediator-pattern\task.js" />
+    <Content Include="design-patters\3.Behavioural\observer-pattern\main.js" />
+    <Content Include="design-patters\3.Behavioural\observer-pattern\task.js" />
+    <Content Include="design-patters\3.Behavioural\pub-sub-pattern\index.js" />
+    <Content Include="design-patters\3.Behavioural\pub-sub-pattern\moduleA.js" />
+    <Content Include="design-patters\3.Behavioural\pub-sub-pattern\moduleB.js" />
+    <Content Include="design-patters\3.Behavioural\pub-sub-pattern\pubsub.js" />
+    <Content Include="NodeJS-Base\buffer.js" />
+    <Content Include="NodeJS-Base\callback-hell.js" />
+    <Content Include="NodeJS-Base\crypto.js" />
+    <Content Include="NodeJS-Base\event-emittter.practice.js" />
+    <Content Include="NodeJS-Base\file-stream.js" />
+    <Content Include="NodeJS-Base\package.json" />
+    <Content Include="NodeJS-Base\rest-api-nodejs.js" />
+    <Content Include="NodeJS-Base\timeout.js" />
+    <Content Include="Pure-Base\Graph.js" />
+    <Content Include="package.json" />
+    <Content Include="Pure-Base\Queue.js" />
+    <Content Include="README.md" />
+    <Content Include="Pure-Base\Stack.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="design-patters\" />
+    <Folder Include="design-patters\0.Objects-JS\" />
+    <Folder Include="design-patters\1.Creational\" />
+    <Folder Include="design-patters\1.Creational\constructor-pattern\" />
+    <Folder Include="design-patters\1.Creational\constructor-pattern\nodejs\" />
+    <Folder Include="design-patters\1.Creational\factory-repository-pattern\" />
+    <Folder Include="design-patters\1.Creational\module-pattern\" />
+    <Folder Include="design-patters\1.Creational\singleton-pattern\" />
+    <Folder Include="design-patters\1.Creational\singleton-pattern\nodejs\" />
+    <Folder Include="design-patters\2.Structural\" />
+    <Folder Include="design-patters\2.Structural\decorator-pattern\" />
+    <Folder Include="design-patters\2.Structural\decorator-pattern\complex\" />
+    <Folder Include="design-patters\2.Structural\decorator-pattern\simple\" />
+    <Folder Include="design-patters\2.Structural\facade-pattern\" />
+    <Folder Include="design-patters\2.Structural\flyweight-pattern\" />
+    <Folder Include="design-patters\3.Behavioural\" />
+    <Folder Include="design-patters\3.Behavioural\command-pattern\" />
+    <Folder Include="design-patters\3.Behavioural\mediator-pattern\" />
+    <Folder Include="design-patters\3.Behavioural\observer-pattern\" />
+    <Folder Include="design-patters\3.Behavioural\pub-sub-pattern\" />
+    <Folder Include="NodeJS-Base\" />
+    <Folder Include="Pure-Base\" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+</Project>
