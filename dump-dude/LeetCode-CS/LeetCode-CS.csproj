@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93E58390-28FE-4A12-A991-98B031F9E196}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>LeetCode_CS</RootNamespace>
+    <AssemblyName>LeetCode-CS</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="3Sum.cs" />
+    <Compile Include="ArrayTwoNumber.cs" />
+    <Compile Include="BinaryTreeRightSideView.cs" />
+    <Compile Include="CloneGraph.cs" />
+    <Compile Include="CountCharacters.cs" />
+    <Compile Include="CustomSortString.cs" />
+    <Compile Include="FindAnagrams.cs" />
+    <Compile Include="FindingCriticalPoint.cs" />
+    <Compile Include="GoatLatin.cs" />
+    <Compile Include="IntersectionOfTwoArray.cs" />
+    <Compile Include="IsCompleteBST.cs" />
+    <Compile Include="IslandPerimeter.cs" />
+    <Compile Include="LastSubStringLexicographical.cs" />
+    <Compile Include="LongestAirthmaticPossibility.cs" />
+    <Compile Include="MaximumSizeSubarraySumEqualK.cs" />
+    <Compile Include="MergeTwoList.cs" />
+    <Compile Include="MinTimeToCreateProduct.cs" />
+    <Compile Include="NextPermutationInt.cs" />
+    <Compile Include="NextPermutationString.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="NumarrayImmutable.cs" />
+    <Compile Include="Palidrom.cs" />
+    <Compile Include="PascalTraingle.cs" />
+    <Compile Include="ProductOfArrayItSelf.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushZero.cs" />
+    <Compile Include="ReorderListLeetCode.cs" />
+    <Compile Include="RomanToInt.cs" />
+    <Compile Include="SerializeDeserializeBinaryTree.cs" />
+    <Compile Include="SmallestSubtreeWithAllDeepestNodes.cs" />
+    <Compile Include="solution.cs" />
+    <Compile Include="SqureSortedArray.cs" />
+    <Compile Include="StockQuestion.cs" />
+    <Compile Include="StringOfParentheses.cs" />
+    <Compile Include="SumRectangle.cs" />
+    <Compile Include="SwapLongestRepeatedCharacterSubstring.cs" />
+    <Compile Include="VerifyingAlienDictionary.cs" />
+    <Compile Include="VerticalOrderOfBinaryTree.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
