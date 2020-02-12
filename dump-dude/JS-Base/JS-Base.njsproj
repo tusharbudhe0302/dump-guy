@@ -61,6 +61,7 @@
     <Content Include="design-patters\3.Behavioural\pub-sub-pattern\moduleA.js" />
     <Content Include="design-patters\3.Behavioural\pub-sub-pattern\moduleB.js" />
     <Content Include="design-patters\3.Behavioural\pub-sub-pattern\pubsub.js" />
+    <Content Include="JSREADME.md" />
     <Content Include="NodeJS-Base\buffer.js" />
     <Content Include="NodeJS-Base\callback-hell.js" />
     <Content Include="NodeJS-Base\crypto.js" />
@@ -69,10 +70,10 @@
     <Content Include="NodeJS-Base\package.json" />
     <Content Include="NodeJS-Base\rest-api-nodejs.js" />
     <Content Include="NodeJS-Base\timeout.js" />
+    <Content Include="NodeJSREADME.md" />
     <Content Include="Pure-Base\Graph.js" />
     <Content Include="package.json" />
     <Content Include="Pure-Base\Queue.js" />
-    <Content Include="README.md" />
     <Content Include="Pure-Base\Stack.js" />
   </ItemGroup>
   <ItemGroup>
