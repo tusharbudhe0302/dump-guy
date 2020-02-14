@@ -1,11 +1,7 @@
-## NodeJS Basics
-
-1. callback hell - nodejs by default asynchronous asyc.waterfall/series/parallel
-2. Promises - return resolve or reject synchronous
-3. async / await -execute code synchronous  way
-
 ### npm 
+
 1. Driective Graph Queuel
+
 2. [Streams in Node.js](https://stackabuse.com/introduction-to-node-js-streams/)
 The Stream module is a native module that is shipped by default in Node.js. The Stream is an instance of the EventEmitter class, which handles events asynchronously in Node.js. Due to their superclass, streams are inherently event-based.
 
@@ -30,13 +26,7 @@ finish: Emitted when all the data has been flushed from the writable stream.
 pipe: Emitted when the writable stream is piped to a readable stream.
 unpipe: Emitted when the writable stream is un-piped from a readable stream.
 
-3. [SolidJS](https://stackabuse.com/spread-operator-in-javascript/)
- - Expanding Arrays
- - Combining Arrays
- - Copying Arrays and Objects
- - [Alternative Functions](https://github.com/tusharbudhe0302/OOP/blob/master/JS/design-patters/JSREADME.md)
-
- 4. [Node.js degugging options](https://nodejs.org/dist/latest-v12.x/docs/api/debugger.html)
+[Node.js degugging options](https://nodejs.org/dist/latest-v12.x/docs/api/debugger.html)
 
 ** Note : -- It's Double dash**
 - --force-fips
@@ -53,7 +43,7 @@ unpipe: Emitted when the writable stream is un-piped from a readable stream.
 - --v8-pool-size
 - --zero-fill-buffers
 
-5. V8 Engine options: :
+V8 Engine options: :
 
 - --abort-on-uncaught-exception
 - --max-old-space-size
@@ -65,7 +55,8 @@ unpipe: Emitted when the writable stream is un-piped from a readable stream.
 
 **Note:**  Do not forget NodeJS is Javascript framework, built on V8 engine of chrome browser.
 
-6. Buffer
+**Buffer**
+
 -  Buffer class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts
  - from
  - alloc
@@ -73,7 +64,7 @@ unpipe: Emitted when the writable stream is un-piped from a readable stream.
  - Buffer Over Come Problem of Event Emitter.Event Emitter will not return callback results.
  - Once Event occured Save it to buffer memory.
 
- 7. EventEmitter
+EventEmitter
 - emitter.eventNames()
 - emitter.listenerCount(eventName)
 -  emitter.listeners(eventName)

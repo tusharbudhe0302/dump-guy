@@ -657,3 +657,52 @@ Math.max(mylist[0], mylist[1], mylist[2]); // 83
 let mylist = [10, 23, 83, -1, 92, -33, 76, 29, 76, 100, 644, -633];
 Math.max(...mylist); // 644
 ```
+
+
+## synchronus Vs asynchronus
+
+- synchronus 
+    Thiis will execute your code line by line. It means it will not go to next line unless your current line of code get executed.
+- asynchronus 
+    If you any IO operation, It will not wait to execute your line of code. it will go to next line.
+
+
+## Event loop in Javascript
+ Please check below code :
+
+```javascript
+        (function() {
+          console.log('this is the start');
+          setTimeout(function cb() {
+            console.log('Callback 1: this is a msg from call back');
+          }); // has a default time value of 0
+          console.log('this is just a message');
+          setTimeout(function cb1() {
+            console.log('Callback 2: this is a msg from call back');
+          }, 0);
+          console.log('this is the end');
+        })();
+```
+* How event loop works?
+    1. Push all command to callback Stack. 
+    2. Stack execute this command, whoevver will get executed first it will go to step 3.
+    3. Event loop will keep a Count of Step 1 &  Step 2.
+    3. Once Callback Stack is empty and callback Queue is full.
+    4. Event loop with print it.
+
+* Out Put  for Program :
+
+    // "this is the start" 
+    // "this is just a message"
+    // "this is the end"
+    // "Callback 1: this is a msg from call back"
+    // "Callback 2: this is a msg from call back"
+
+   ## SOAP Vs REST
+
+| SOAP   |      REST      |  
+|----------|:-------------:|
+| SOAP is a standardized protocol that sends messages using other protocols such as HTTP, TCP,FTP and SMTP etc..| Only HTTP protocol for data transmission|
+| WSDL Files, defualt XML |    JSON   | 
+| SOAP UI | Postman |  
+| NodeJS SOAP, WCF & Web Services  | ExpressJS & C# Web API |  
