@@ -422,6 +422,31 @@ namespace next_gen
             }
 
         }
+        public bool IsSubtree(TreeNode s, TreeNode t)
+        {
+            Queue<TreeNode> sQ = new Queue<TreeNode>();
+            sQ.Enqueue(s);
+            while(sQ != null)
+            {
+                TreeNode currTreeNode = sQ.Peek();
+                sQ.Dequeue();
+                if ((currTreeNode.val == t.val) && (currTreeNode.left.val == t.left.val) && (currTreeNode.right.val == t.right.val) && sQ.Count<=1)
+                    return true;
 
+                if (currTreeNode.left != null)
+                    sQ.Enqueue(currTreeNode.left);
+                if (currTreeNode.right != null)
+                    sQ.Enqueue(currTreeNode.right);
+            }
+            return false;
+        }
+    }
+
+    public class TreeNode
+    {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int x) { val = x; }
     }
 }
