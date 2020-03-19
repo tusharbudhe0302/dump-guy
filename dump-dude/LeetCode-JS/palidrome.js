@@ -15,7 +15,7 @@
  */
 var longestPalindrome = function (s) {
     let sReverse = s.split('').reverse().join('');
-    sReverse.E
+    // sReverse.E
     return "";
 };
 let result = longestPalindrome("babad");

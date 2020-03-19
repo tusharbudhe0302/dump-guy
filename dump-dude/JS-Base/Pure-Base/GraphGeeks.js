@@ -60,7 +60,7 @@ class Graph {
     // function to performs BFS 
     bfs(startingNode) {
         // create a visited array 
-        let visited = new Map();
+        let visited = {};
         for (var i = 0; i < this.noOfVertices; i++)
             visited[i] = false;
 
@@ -73,6 +73,11 @@ class Graph {
 
         // loop until queue is element 
         while (q.length > 0) {
+            // let keys = visited.keys();
+            // for (let i in keys) {
+            //     console.log(`Item Key` + visited.get(keys[i]));
+            // }
+
             // get the element from the queue 
             var getQueueElement = q.shift();
 
@@ -89,15 +94,16 @@ class Graph {
                 var neigh = get_List[i];
                 if (!visited[neigh]) {
                     visited[neigh] = true;
+                    console.log(`Set Item visited ${neigh} : ${visited[neigh]}`);
                     q.push(neigh);
                 }
-
-
+                else {
+                    console.log(`Get Item visited ${neigh} : ${visited[neigh]}`);
+                }
             }
-
-            // dfs(v) 
         }
     }
+    // dfs(v) 
 }
 
 // Using the above implemented graph class 

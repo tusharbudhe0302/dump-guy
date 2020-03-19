@@ -11,6 +11,7 @@ class BinaryTreeTravelser {
         this.results = [];
         this.min;
         this.max;
+        this.height = 0;
     }
     // Create Dummmy Binary Tree
     createDummyTree() {
@@ -103,8 +104,74 @@ class BinaryTreeTravelser {
     // Height Of Tree is 0 if it has only root node  or It's height of root
     // Depth is defined as number of edges from that node.
     // Height & Max depth
-    heightOrDepthOfTree(link) {
+    getHeight(link) {
+        if (!link)
+            return 0;
+        else {
+            this.height = this.heightHelper(link);
+            return;
+        }
+    }
+    heightHelper(node) {
+        if (!node) return -1;
+        let leftHeight = this.heightHelper(node.left);
+        let rightHeight = this.heightHelper(node.right);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+    levelOrderOfBST() {
+        if (this.root === null) return this.root;
+        if (this.root.left === null && this.root.right === null) return this.root;
+        const queue = [];
+        let current = this.root;
+        queue.push(current);
+        while (queue.length > 0) {
+            const length = queue.length;
+            const nodes = queue.splice(0, length);
+            for (let i = 0; i < length; i++) {
+                let node = nodes.shift()
+                this.results.push(node.key);
+                if (nodes.length > 0) node.next = nodes[0];
+                else node.next = null;
+                if (node.left) queue.push(node.left);
+                if (node.right) queue.push(node.right);
+            }
+        }
+        return this.results;
+    }
+    levelOrderOfBSTVersion2() {
+        if (this.root === null) return this.root;
+        if (this.root.left === null && this.root.right === null) return this.root;
+        const queue = [];
+        let current = this.root;
+        queue.push(current);
+        while (queue.length > 0) {
+            let node = queue.shift();
+            this.results.push(node.key);
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+        return this.results;
+    }
 
+    reverseOfLevelOrderOfBST() {
+        if (this.root === null) return this.root;
+        if (this.root.left === null && this.root.right === null) return this.root;
+        const queue = [];
+        let current = this.root;
+        queue.push(current);
+        while (queue.length > 0) {
+            const length = queue.length;
+            const nodes = queue.splice(0, length);
+            for (let i = 0; i < length; i++) {
+                let node = nodes.shift()
+                this.results.push(node.key);
+                if (nodes.length > 0) node.next = nodes[0];
+                else node.next = null;
+                if (node.left) queue.push(node.left);
+                if (node.right) queue.push(node.right);
+            }
+        }
+        return this.results;
     }
     displayOption(option, data) {
         let link;
@@ -139,6 +206,15 @@ class BinaryTreeTravelser {
                 this.findMaxElementInBSTRecurssive(link);
                 console.log(`findMaxElementInBSTRecurssive : ${this.max}`);
                 break;
+            case 7:
+                link = this.root;
+                this.getHeight(link);
+                console.log(`height of  BST: ${this.height}`);
+                break;
+            case 8:
+                this.levelOrderOfBSTVersion2();
+                this.levelOrderOfBST();
+                console.log(`Level Order Of BST : ${this.results}`);
             default:
                 break;
         }
@@ -153,10 +229,16 @@ treeTravel.insertItemToTreeNode(10);
 treeTravel.insertItemToTreeNode(15);
 treeTravel.insertItemToTreeNode(5);
 treeTravel.insertItemToTreeNode(7);
+treeTravel.insertItemToTreeNode(6);
+treeTravel.insertItemToTreeNode(8);
 treeTravel.insertItemToTreeNode(17);
+treeTravel.insertItemToTreeNode(21);
+treeTravel.insertItemToTreeNode(25);
 treeTravel.displayOption(1);
 treeTravel.displayOption(2, 15);
-// treeTravel.displayOption(3);
-// treeTravel.displayOption(4);
+treeTravel.displayOption(3);
+treeTravel.displayOption(4);
 treeTravel.displayOption(5);
 treeTravel.displayOption(6);
+treeTravel.displayOption(7);
+treeTravel.displayOption(8);

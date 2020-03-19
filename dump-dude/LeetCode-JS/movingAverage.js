@@ -1,12 +1,21 @@
+// Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
+
+// Example:
+
+// MovingAverage m = new MovingAverage(3);
+// m.next(1) = 1
+// m.next(10) = (1 + 10) / 2
+// m.next(3) = (1 + 10 + 3) / 3
+// m.next(5) = (10 + 3 + 5) / 3
+// ["MovingAverage","next","next","next","next"]
+// [[3],[1],[10],[3],[5]]
 /**
  * Initialize your data structure here.
  * @param {number} size
  */
-let maxCounter = -1;
-let negativeCount = 0;
 var MovingAverage = function (size) {
-    this.elments = [];
-    maxCounter = size;
+    this.items = [];
+    this.maxSize = size;
 };
 
 /** 
@@ -14,42 +23,30 @@ var MovingAverage = function (size) {
  * @return {number}
  */
 MovingAverage.prototype.next = function (val) {
-    if (maxCounter < 0) return val / 1;
-    if (maxCounter > this.elments.length) {
-        this.elments.push(val);
+    let average = 0;
+    if (this.items.length < this.maxSize) {
+        this.items.push(val);
     } else {
-        this.elments.shift();
-        this.elments.push(val);
+        this.items.shift();
+        this.items.push(val);
     }
     let sum = 0;
-    this.elments.map((num, i) => {
-        sum += num;
-        if (Math.sign(num) < 0) {
-            negativeCount++;
-        }
+    average = this.items.length;
+    this.items.map((item) => {
+        sum += item;
     })
-    console.log(`sum : ${sum} negativeCount : ${negativeCount} `);
-    let result = Math.abs(sum / this.elments.length)
-    if (negativeCount % 2 > 0) {
-        result = "-" + result;
-    }
-    return result
+    return sum / average;
 };
 
-/** 
+
+/**
  * Your MovingAverage object will be instantiated and called as such:
  * var obj = new MovingAverage(size)
  * var param_1 = obj.next(val)
  */
 
-// let m = new MovingAverage(3);
-// console.log(m.next(1));// = 1
-// console.log(m.next(10));// =  (1 + 10) / 2
-// console.log(m.next(3)); //= (1 + 10 + 3) / 3
-// console.log(m.next(5)); // = (10 + 3 + 5) / 3
-
-let m = new MovingAverage(1);
-console.log(m.next(4));// = 1
-console.log(m.next(0));
-// console.log(m.next(-5));// = 1
-// console.log(m.next(-1));// = 1
+var obj = new MovingAverage(3)
+console.log(obj.next(1));
+console.log(obj.next(10));
+console.log(obj.next(3));
+console.log(obj.next(5));

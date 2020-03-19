@@ -1,3 +1,2 @@
-'use strict';
-
-console.log('Hello world');
+let a = ['AB', 'CB']
+console.log(a[1].split('').sort());
