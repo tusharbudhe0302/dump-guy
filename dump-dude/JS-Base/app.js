@@ -1,298 +1,231 @@
-class TreeNode {
-    constructor(item) {
-        this.key = item;
-        this.left = null;
-        this.right = null;
+class LinkNode {
+    constructor(num) {
+        this.val = num;
+        this.next = null;
     }
 }
-class BinaryTreeTravelser {
+class SinglyLinkList {
     constructor() {
-        this.root = null;
-        this.results = [];
-        this.min;
-        this.max;
-        this.height = 0;
-        this.path = [];
-        this.sum = 0;
+        this.start = null;
+        this.localStorage = null;
     }
-    // Create Dummmy Binary Tree
-    createDummyTree() {
-        this.root = new TreeNode(1);
-        this.root.left = new TreeNode(2);
-        this.root.right = new TreeNode(3);
-        this.root.left.left = new Node(4);
-    }
-    // Insert items to node
-    insertItemToTreeNode(data) {
-        if (!this.root) {
-            this.root = new TreeNode(data);
-            return;
-        }
-        let p = this.root;
-        let prev;
-        while (p) {
-            prev = p;
-            if (data <= p.key) {
-                p = p.left;
-            }
-            else if (data > p.key) {
-                p = p.right;
-            }
-        }
-        // console.log(prev);
-        if (prev.key <= data) {
-            prev.right = new TreeNode(data);
-            return this.root;
+    // Insert Item At Begining Of List
+    insertItemAtBegining(num) {
+        if (!this.isEmpty()) {
+            //if List is not empty the you need Hold temp value for start
+            let temp = this.start;
+            const newTemp = new LinkNode(num);
+            newTemp.next = temp;
+            this.start = newTemp;
         } else {
-            prev.left = new TreeNode(data);
-            return this.root;
-        }
-    }
-    // Search Item into tree
-    checkItemPresentInTree(link, data) {
-        if (link.key === data) {
-            this.results = [];
-            this.results.push(link.key);
-            console.log(`Item Exist in tree`);
-            return true;
-        }
-        if (link.left)
-            this.checkItemPresentInTree(link.left, data);
-        if (link.right)
-            this.checkItemPresentInTree(link.right, data);
-    }
-    // min & max element of BST
-    // To find min you shoud trvel left of left
-    findMinElementInBSTIterative(link) {
-        let p = link;
-        let _prev;
-        while (p) {
-            _prev = p;
-            p = p.left;
-        }
-        this.results = [];
-        return this.min = _prev.key;
-    }
-    findMinElementInBSTRecurssive(link) {
-        this.min = link.key;
-        if (link.left)
-            this.findMinElementInBSTRecurssive(link.left)
-    }
-    // To find max you shoud trvel right of right
-    findMaxElementInBSTIterative(link) {
-        let p = link;
-        let _prev;
-        while (p) {
-            _prev = p;
-            p = p.right;
-        }
-        this.results = [];
-        return this.max = _prev.key;
-    }
-    findMaxElementInBSTRecurssive(link) {
-        this.max = link.key;
-        if (link.right)
-            this.findMaxElementInBSTRecurssive(link.right)
-    }
-    // Display Pre Order Of Binary Search Tree Recurssive
-    preorderOfBSTRecurssive(link) {
-        this.results.push(link.key);
-        if (link.left)
-            this.preorderOfBSTRecurssive(link.left);
-        if (link.right)
-            this.preorderOfBSTRecurssive(link.right);
-    }
-    // Maximum Depth Or Height of Binary Tree
-    // Height Of Tree is 0 if it has only root node  or It's height of root
-    // Depth is defined as number of edges from that node.
-    // Height & Max depth
-    getHeight(link) {
-        if (!link)
-            return 0;
-        else {
-            this.height = this.heightHelper(link);
+            this.start = new LinkNode(num);
             return;
         }
     }
-    heightHelper(node) {
-        if (!node) return -1;
-        let leftHeight = this.heightHelper(node.left);
-        let rightHeight = this.heightHelper(node.right);
-        return Math.max(leftHeight, rightHeight) + 1;
+    // Insert Item At End Of List
+    insertItemAtEnd(num) {
+        if (this.isEmpty()) {
+            this.start = new LinkNode(num);
+            return;
+        }
+        let tempLink = this.start;
+        while (tempLink.next) {
+            tempLink = tempLink.next;
+        }
+        tempLink.next = new LinkNode(num);
     }
-    levelOrderOfBST() {
-        if (this.root === null) return this.root;
-        if (this.root.left === null && this.root.right === null) return this.root;
-        const queue = [];
-        let current = this.root;
-        queue.push(current);
-        while (queue.length > 0) {
-            const length = queue.length;
-            const nodes = queue.splice(0, length);
-            for (let i = 0; i < length; i++) {
-                let node = nodes.shift()
-                this.results.push(node.key);
-                if (nodes.length > 0) node.next = nodes[0];
-                else node.next = null;
-                if (node.left) queue.push(node.left);
-                if (node.right) queue.push(node.right);
+    // Insert Item Before Item of specific position
+    insertItemBefore(itemToCheck, num) {
+        if (this.isEmpty()) {
+            console.log(`List is Empty`);
+            return;
+        }
+        let tempBefore = this.start;
+        let isItemFound = true;
+        while (tempBefore) {
+            if (tempBefore.next && tempBefore.next.val === itemToCheck) {
+                let temp = new LinkNode(num);
+                temp.next = tempBefore.next;
+                tempBefore.next = temp;
+                isItemFound = true;
+                return;
             }
+            tempBefore = tempBefore.next;
         }
-        return this.results;
-    }
-    levelOrderOfBSTVersion2() {
-        if (this.root === null) return this.root;
-        if (this.root.left === null && this.root.right === null) return this.root;
-        const queue = [];
-        let current = this.root;
-        queue.push(current);
-        while (queue.length > 0) {
-            let node = queue.shift();
-            this.results.push(node.key);
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
+        if (!isItemFound) {
+            console.log(`No Item found in list`);
         }
-        return this.results;
     }
-    reverseOfLevelOrderOfBST() {
-        if (this.root === null) return this.root;
-        if (this.root.left === null && this.root.right === null) return this.root;
-        const queue = [];
-        let current = this.root;
-        queue.push(current);
-        while (queue.length > 0) {
-            const length = queue.length;
-            const nodes = queue.splice(0, length);
-            for (let i = 0; i < length; i++) {
-                let node = nodes.shift()
-                this.results.push(node.key);
-                if (nodes.length > 0) node.next = nodes[0];
-                else node.next = null;
-                if (node.left) queue.push(node.left);
-                if (node.right) queue.push(node.right);
+    // Insert Item After Item of specific position
+    insertItemAfter(itemToCheck, num) {
+        if (this.isEmpty()) {
+            console.log(`List is Empty`);
+            return;
+        }
+        let tempAfter = this.start;
+        let isItemFound = false;
+        while (tempAfter) {
+            if (tempAfter.val === itemToCheck) {
+                let temp = new LinkNode(num);
+                temp.next = tempAfter.next;
+                tempAfter.next = temp;
+                isItemFound = true;
+                return;
             }
+            tempAfter = tempAfter.next;
         }
-        return this.results;
-    }
-    inrderOfBSTR(link) {
-        if (!link) return;
-        this.inrderOfBSTR(link.left);
-        this.results.push(link.key);
-        this.inrderOfBSTR(link.right);
-    }
-    inrderOfBSTIterative(link) {
-        this.results = [];
-        let stackInOrder = [];
-        let p = link;
-        while (p || stackInOrder.length > 0) {
-            console.log(JSON.stringify(stackInOrder));
-            if (p) {
-                stackInOrder.push(p);
-                p = p.left;
-            } else {
-                p = stackInOrder.pop();
-                this.results.push(p.key);
-                p = p.right;
-            }
+        if (!isItemFound) {
+            console.log(`No Item found in list`);
         }
-    }
-    displayOption(option, data) {
-        let link;
-        switch (option) {
-            case 1:
-                link = this.root;
-                this.results = [];
-                this.preorderOfBSTRecurssive(link);
-                console.log(`preOrderRecussiveResult : ${this.results}`);
-                break;
-            case 2:
-                link = this.root;
-                this.results = [];
-                this.checkItemPresentInTree(link, data);
-                console.log(`checkItemPresentInTree : ${this.results}`);
-                break;
-            case 3:
-                link = this.root;
-                this.results = [];
-                this.findMinElementInBSTIterative(link);
-                console.log(`findMinElementInBSTIterative : ${this.min}`);
-                break;
-            case 4:
-                link = this.root;
-                this.results = [];
-                this.findMaxElementInBSTIterative(link);
-                console.log(`findMaxElementInBSTIterative : ${this.max}`);
-                break;
-            case 5:
-                link = this.root;
-                this.results = [];
-                this.findMinElementInBSTRecurssive(link);
-                console.log(`findMinElementInBSTRecurssive : ${this.min}`);
-                break;
-            case 6:
-                link = this.root;
-                this.results = [];
-                this.findMaxElementInBSTRecurssive(link);
-                console.log(`findMaxElementInBSTRecurssive : ${this.max}`);
-                break;
-            case 7:
-                link = this.root;
-                this.results = [];
-                this.getHeight(link);
-                console.log(`height of  BST: ${this.height}`);
-                break;
-            case 8:
-                this.results = [];
-                this.levelOrderOfBSTVersion2();
-                this.results = [];
-                this.levelOrderOfBST();
-                console.log(`Level Order Of BST : ${this.results}`);
-            case 9:
-                this.results = [];
-                link = this.root;
-                // this.inrderOfBSTR(link);
-                this.inrderOfBSTIterative(link);
-                console.log(`In Order : ${this.results}`);
-            default:
-                break;
-        }
-    }
 
-    sumEqualKBT(link, k) {
-        if (!link) return;
-        this.sum = this.sum + link.key;
-        this.path.push(link.key);
-        if (this.sum === k) {
-            console.log(`Result Path : ${this.path}`);
+    }
+    // reverse Order Of List. You need to mugup this.
+    reverseOfList() {
+        let previous = null, _next;
+        let current = this.start;
+        while (current) {
+            _next = current.next;
+            current.next = previous;
+            previous = current;
+            current = _next;
         }
-        this.sumEqualKBT(link.left, k);
-        this.sumEqualKBT(link.right, k);
-        this.sum = this.sum - link.key;;
-        this.path.pop();
-        console.log(`Current path to debug  :  ${this.path}`);
+        this.start = previous;
+        return this.start;
+    }
+    // reverse Order Of List. You need to mugup this.
+    reverseOfListRecurrsive(link) {
+        if (!link.next) {
+            this.start = link;
+            return;
+        }
+        // console.log(`before ${newStart.val}`);
+        this.reverseOfListRecurrsive(link.next);
+        console.log(link.key);
+        let q = link.next;
+        q.next = link;
+        link.next = null;
+        // console.log(`after ${newStart.val}`);
+    }
+    // Check If List is Empty
+    isEmpty() {
+        if (this.start)
+            return false;
+        else
+            return true;
+    }
+    // Total number of Items in List
+    count() {
+        let count = 0;
+        if (this.isEmpty()) {
+            return count;
+        }
+        let tempCount = this.start;
+        while (tempCount.next) {
+            count++;
+            tempCount = tempCount.next;
+        }
+        return count + 1;
+    }
+    // Display Link List
+    displayLinkList() {
+        if (this.isEmpty()) {
+            console.log(`List is empty`);
+            return;
+        }
+        let tempResult = [];
+        let tempLink = this.start;
+        while (tempLink.next) {
+            tempResult.push(tempLink.val);
+            tempLink = tempLink.next;
+        }
+        tempResult.push(tempLink.val);
+        console.log(`${tempResult}`);
+    }
+    // Delete first Item of List 
+    deleteFirstItem() {
+        let tempStart = this.start;
+        this.start = tempStart.next;
+    }
+    // Delete last Item of List 
+    deleteLastItem() {
+        let temp = this.start;
+        while (temp.next.next) {
+            temp = temp.next;
+        }
+        temp.next = null;
+    }
+    // Delete Specific Item from list 
+    deleteItem(num) {
+        let temp = this.start;
+        let isItemFound = false;
+        while (temp) {
+            let previous = temp;
+            if (temp.next && num === temp.val) {
+                isItemFound = true;
+                previous.next = temp;
+                temp = temp.next;
+            }
+            temp = temp.next;
+        }
+        if (!isItemFound) {
+            console.log(`No Item found..`);
+        }
+    }
+    // Make a list empty.
+    makeEmptyList() {
+        // Just need make start as null. It will dealocate rest of memory
+        this.start = null;
+    }
+    // Create Dummy Link List
+    createDummyLinkList() {
+        let temp = new LinkNode(11);
+        temp.next = new LinkNode(22);
+        temp.next.next = new LinkNode(33);
+        temp.next.next.next = new LinkNode(44);
+        this.start = temp;
+        return this.start;
     }
 }
-// InOrder Of Binary Tree
-// PreOrder of Binary Tree
-// Post Order Of Binay Tree
-
-let treeTravel = new BinaryTreeTravelser();
-treeTravel.insertItemToTreeNode(10);
-treeTravel.insertItemToTreeNode(15);
-treeTravel.insertItemToTreeNode(5);
-treeTravel.insertItemToTreeNode(7);
-treeTravel.insertItemToTreeNode(6);
-treeTravel.insertItemToTreeNode(8);
-treeTravel.insertItemToTreeNode(17);
-treeTravel.insertItemToTreeNode(21);
-treeTravel.insertItemToTreeNode(25);
-treeTravel.sumEqualKBT(treeTravel.root, 25);
-// treeTravel.displayOption(1);
-// treeTravel.displayOption(2, 15);
-// treeTravel.displayOption(3);
-// treeTravel.displayOption(4);
-// treeTravel.displayOption(5);
-// treeTravel.displayOption(6);
-// treeTravel.displayOption(7);
-// treeTravel.displayOption(8);
-// treeTravel.displayOption(9);
+const singlyLinkListInsertAtBegining = new SinglyLinkList();
+singlyLinkListInsertAtBegining.insertItemAtBegining(5);
+singlyLinkListInsertAtBegining.insertItemAtBegining(15);
+singlyLinkListInsertAtBegining.insertItemAtBegining(25);
+console.log(`singlyLinkList : insertItemAtBegining`);
+singlyLinkListInsertAtBegining.displayLinkList();// 25 15 5
+const singlyLinkListInsertItemAtEnd = new SinglyLinkList();
+console.log(`singlyLinkList : insertItemAtEnd`);
+singlyLinkListInsertItemAtEnd.insertItemAtEnd(5);
+singlyLinkListInsertItemAtEnd.insertItemAtEnd(15);
+singlyLinkListInsertItemAtEnd.insertItemAtEnd(25);
+singlyLinkListInsertItemAtEnd.displayLinkList();// 5 15 25
+console.log(`singlyLinkList : insertItemBefore 25 item to Insert : 20`);
+singlyLinkListInsertItemAtEnd.insertItemBefore(25, 20);
+singlyLinkListInsertItemAtEnd.displayLinkList();// 5 15 20 25
+console.log(`singlyLinkList : insertItemAfter 25 item to Insert : 30`);
+singlyLinkListInsertItemAtEnd.insertItemAfter(25, 30);
+singlyLinkListInsertItemAtEnd.displayLinkList();// 5 15 20 25 30
+console.log(`singlyLinkList : insertItemAfter 5 item to Insert : 10`);
+singlyLinkListInsertItemAtEnd.insertItemAfter(5, 10);
+singlyLinkListInsertItemAtEnd.displayLinkList();// 5  10 15 20 25 30
+console.log(`singlyLinkList : count : ${singlyLinkListInsertItemAtEnd.count()}`);
+console.log(`singlyLinkList : deleteFirstItem`);
+singlyLinkListInsertItemAtEnd.deleteFirstItem();
+singlyLinkListInsertItemAtEnd.displayLinkList();// 10 15 20 25 30
+console.log(`singlyLinkList : deleteLastItem`);
+singlyLinkListInsertItemAtEnd.deleteLastItem();
+singlyLinkListInsertItemAtEnd.displayLinkList();// 10 15 20 25
+console.log(`singlyLinkList : isEmpty ${singlyLinkListInsertItemAtEnd.isEmpty()}`);
+console.log(`singlyLinkList : makeEmptyList`);
+singlyLinkListInsertItemAtEnd.makeEmptyList();
+singlyLinkListInsertItemAtEnd.displayLinkList();
+console.log(`singlyLinkList : reverse of list`);
+singlyLinkListInsertItemAtEnd.createDummyLinkList();
+singlyLinkListInsertItemAtEnd.displayLinkList(); // 11 22 33 44
+singlyLinkListInsertItemAtEnd.reverseOfList();
+singlyLinkListInsertItemAtEnd.displayLinkList(); // 44 33 22 11
+console.log(`singlyLinkList : reverse of list recurrsion`);
+const reverseListRecurrsiveMode = new SinglyLinkList();
+let start = reverseListRecurrsiveMode.createDummyLinkList();
+reverseListRecurrsiveMode.displayLinkList(); // 11 22 33 44
+reverseListRecurrsiveMode.reverseOfListRecurrsive(start);
+reverseListRecurrsiveMode.displayLinkList(); //44 33 22 11

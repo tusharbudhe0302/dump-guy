@@ -33,6 +33,7 @@ var dayOfTheWeek = function (day, month, year) {
         Sat: 'Saturday',
         Sun: 'Sunday'
     }
+
     let utcDateString = new Date(year, month - 1, day).toUTCString().substring(0, 3);
     console.log(`Day : ${utcDateString}`);
     switch (utcDateString) {

@@ -12,6 +12,8 @@ class BinaryTreeTravelser {
         this.min;
         this.max;
         this.height = 0;
+        this.serializeOP = [];
+        this.deserializeIndex = 0;
     }
     // Create Dummmy Binary Tree
     createDummyTree() {
@@ -218,6 +220,28 @@ class BinaryTreeTravelser {
             default:
                 break;
         }
+    }
+
+    serializeBT() {
+        this.serializeHelper(this.root);
+    }
+    serializeHelper(link) {
+        if (!link) {
+            this.serializeOP.push(-1);
+            return;
+        }
+        this.serializeOP.push(link.key);
+        this.serializeBT(link.left);
+        this.serializeBT(link.right);
+    }
+    deserialzeBT() {
+        this.deserialzeBTHelper(this.serializeOP);
+    }
+    deserialzeBTHelper(serializeArray) {
+        if (this.serializeOP >= serializeArray.length) return this.root;
+        this.root = new TreeNode(serializeArray[this.serializeOP++]);
+        this.root.left = this.deserialzeBTHelper(serializeArray);
+        this.root.right = this.deserialzeBTHelper(serializeArray);
     }
 }
 // Inoder Of Binary Tree

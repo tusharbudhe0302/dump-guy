@@ -98,6 +98,21 @@ class Graph {
             // dfs(v) 
         }
     }
+    dfs(startNode) {
+        let visited = new Object();
+        this.dfsHelper(startNode, visited);
+    }
+    dfsHelper(vert, visted) {
+        visted[vert] = true;
+        console.log(vert);
+        let neighbours = this.AdjList.get(vert);
+        for (i in neighbours) {
+            let tempCal = neighbours[i];
+            if (!visted[tempCal]) {
+                this.dfsHelper(tempCal, visted);
+            }
+        }
+    }
 }
 
 // Using the above implemented graph class 

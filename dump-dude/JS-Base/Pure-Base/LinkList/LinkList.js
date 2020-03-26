@@ -100,6 +100,7 @@ class SinglyLinkList {
         }
         // console.log(`before ${newStart.val}`);
         this.reverseOfListRecurrsive(link.next);
+        console.log(link.key);
         let q = link.next;
         q.next = link;
         link.next = null;
